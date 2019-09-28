@@ -296,4 +296,117 @@ function displayToc(a)
 			z=postLabels[g].lastIndexOf(a);
 			if(z!=-1)
 				{
-				h+='<tr><td class="toc-entry-col1"><a href="'+postUrl[g]+'">'+postTitle[g]+'</a></
+				h+='<tr><td class="toc-entry-col1"><a href="'+postUrl[g]+'">'+postTitle[g]+'</a></td><td class="toc-entry-col2">'+postDate[g]+'</td><td class="toc-entry-col3">'+postLabels[g]+'</td><td class="toc-entry-col4"><a href="'+postMp3[g]+'">Download</a></td></tr>';
+				l++
+			}
+		}
+	}
+	h+="</table>";
+	if(l==postTitle.length)
+		{
+		var f='<span class="toc-note">Menampilkan Semua '+postTitle.length+" Artikel<br/></span>"
+	}
+	else
+		{
+		var f='<span class="toc-note">Menampilkan '+l+" artikel dengan kategori '";
+		f+=postFilter+"' dari "+postTitle.length+" Total Artikel<br/></span>"
+	}
+	var b=document.getElementById("toc");
+	b.innerHTML=f+h
+}
+function displayToc2()
+	{
+	var a=0;
+	var b=0;
+	while(b<postTitle.length)
+		{
+		temp1=postLabels[b];
+		document.write("<p/>");
+		document.write('<span class="labl"><a href="/search/label/'+temp1+'">'+temp1+"</a></span><ol class='postname'>");
+		firsti=a;
+		do
+			{
+			document.write("<li>");
+			document.write('<a href="'+postUrl[a]+'">'+postTitle[a]+"</a>");
+			if(postBaru[a]==true)
+				{
+				document.write(' - <span class="new">New!</span>')
+			}
+			document.write("</li>");
+			a=a+1
+		}
+		while(postLabels[a]==temp1);
+		b=a;
+		document.write("</ol>");
+		sortPosts2(firsti,a);
+		if(b>postTitle.length)
+			{
+			break
+		}
+	}
+}
+function toggleTitleSort()
+	{
+	if(sortBy=="titleasc")
+		{
+		sortBy="titledesc"
+	}
+	else
+		{
+		sortBy="titleasc"
+	}
+	sortPosts(sortBy);
+	displayToc(postFilter)
+}
+function toggleDateSort()
+	{
+	if(sortBy=="datenewest")
+		{
+		sortBy="dateoldest"
+	}
+	else
+		{
+		sortBy="datenewest"
+	}
+	sortPosts(sortBy);
+	displayToc(postFilter)
+}
+function showToc()
+	{
+	if(tocLoaded)
+		{
+		displayToc(postFilter);
+		var a=document.getElementById("toclink")
+	}
+	else
+		{
+		alert("Just wait... TOC is loading")
+	}
+}
+function hideToc()
+	{
+	var a=document.getElementById("toc");
+	a.innerHTML="";
+	var b=document.getElementById("toclink");
+	b.innerHTML='<a href="#" onclick="scroll(0,0);
+	 showToc();
+	 Effect.toggle(\'toc-result\',\'blind\');
+	">?? Menampilkan Daftar Isi</a> <img src="http://radiorodja.googlepages.com/new_1.gif"/>'
+}
+function looptemp2()
+	{
+	for(var a=0;
+	a<numberfeed;
+	a++)
+		{
+		document.write("<br>");
+		document.write('Post Link		  : <a href="'+postUrl[a]+'">'+postTitle[a]+"</a><br>");
+		document.write('Download mp3  : <a href="'+postMp3[a]+'">'+postTitle[a]+"</a><br>");
+		document.write("<br>")
+	}
+};
+document.write("<span style='font-size:0px;
+float:right;
+font-family:arial;
+margin:20px 5px 0 0;
+'><a title='Đậu Dũng - Style by www.daudung.com' href='http://www.daudung.com' target='_blank' rel='nofollow'><font color='#ff5f00'>Grab this widget!</font></a></span>");
