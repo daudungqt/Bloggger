@@ -409,4 +409,4 @@ document.write("<span style='font-size:0px;
 float:right;
 font-family:arial;
 margin:20px 5px 0 0;
-'><a title='Blogger Dau Dung - Style by www.daudung.com' href='http://www.abu-farhan.com' target='_blank' rel='nofollow'><font color='#ff5f00'>Grab this widget!</font></a></span>");
+'><a title='Blogger Dau Dung - Style by www.daudung.com' href='/' target='_blank' rel='nofollow'><font color='#ff5f00'>Grab this widget!</font></a></span>");
